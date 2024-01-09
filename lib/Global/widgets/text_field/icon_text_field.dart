@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:p_route/global/common/colors/app_colors.dart';
+import 'package:p_route/Global/common/colors/app_colors.dart';
 
 class IconTextField extends StatelessWidget {
   const IconTextField({
@@ -49,7 +49,7 @@ class IconTextField extends StatelessWidget {
             return null;
           },
       decoration: InputDecoration(
-        fillColor: AppColors.fields,
+        fillColor: AppColors.field,
         filled: true,
         // prefixIcon: leadingIcon ?? const SizedBox.shrink(),
         suffixIcon: suffixIcon ?? const SizedBox.shrink(),

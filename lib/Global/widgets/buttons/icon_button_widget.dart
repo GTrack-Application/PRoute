@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/global/common/colors/app_colors.dart';
 
 class IconButtonWidget extends StatelessWidget {
@@ -27,8 +27,8 @@ class IconButtonWidget extends StatelessWidget {
           child: Image.asset(
             icon,
             fit: BoxFit.contain,
-            height: context.height,
-            width: context.width,
+            height: context.height(),
+            width: context.width(),
           ),
         ),
         Flexible(

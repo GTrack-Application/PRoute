@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:p_route/global/common/colors/app_colors.dart';
+import 'package:p_route/Global/common/colors/app_colors.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
@@ -48,7 +48,7 @@ class TextFieldWidget extends StatelessWidget {
             return null;
           },
       decoration: InputDecoration(
-        fillColor: AppColors.fields,
+        fillColor: AppColors.field,
         filled: true,
         suffixIcon: suffixIcon ?? const SizedBox.shrink(),
         contentPadding: const EdgeInsets.symmetric(

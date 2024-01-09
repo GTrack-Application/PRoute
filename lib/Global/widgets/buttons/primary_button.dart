@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 class PrimaryButtonWidget extends StatelessWidget {
   const PrimaryButtonWidget({
@@ -14,7 +14,7 @@ class PrimaryButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.width,
+      width: context.width(),
       height: 45,
       child: ElevatedButton(
         onPressed: onPressed,
