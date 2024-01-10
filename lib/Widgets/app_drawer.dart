@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Global/common/colors/app_colors.dart';
+import 'package:p_route/Global/common/utils/app_navigator.dart';
+import 'package:p_route/Screens/new_route_screen.dart';
 import 'package:p_route/Widgets/app_text.dart';
 
 class AppDrawerWidget extends StatelessWidget {
@@ -96,20 +98,28 @@ class AppDrawerWidget extends StatelessWidget {
               ),
             ),
             20.height,
-            Container(
-              margin: const EdgeInsets.only(left: 20),
-              child: Row(
-                children: [
-                  const Icon(
-                    Ionicons.add_outline,
-                    color: Colors.black,
-                  ),
-                  10.width,
-                  AppText.subHeading(
-                    'Add New Route',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {
+                AppNavigator.goToPage(
+                  context: context,
+                  screen: const NewRouteScreen(),
+                );
+              },
+              child: Container(
+                margin: const EdgeInsets.only(left: 20),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Ionicons.add_outline,
+                      color: Colors.black,
+                    ),
+                    10.width,
+                    AppText.subHeading(
+                      'Add New Route',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ],
+                ),
               ),
             ),
             20.height,
