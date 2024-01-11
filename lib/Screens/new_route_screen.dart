@@ -51,13 +51,29 @@ class _NewRouteScreenState extends State<NewRouteScreen> {
             5.height,
             const Divider(color: Colors.grey),
             10.height,
-            AppText.subHeading(
-              "Route Scedule",
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () {
+                showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2021),
+                  lastDate: DateTime(2025),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppText.subHeading(
+                    "Route Scedule",
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  5.height,
+                  AppText.subHeading("Janauary 08, 2024    02:22 pm"),
+                ],
+              ),
             ),
-            5.height,
-            AppText.subHeading("Janauary 08, 2024    02:22 pm"),
             20.height,
             AppText.subHeading(
               "Optimization Type",

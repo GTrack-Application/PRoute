@@ -19,6 +19,8 @@ class HistoryTextFieldWidget extends StatefulWidget {
     this.prefix,
     this.historyPrefixIcon,
     this.deleteIcon,
+    this.hintText,
+    this.backgroundColor,
   });
 
   final TextEditingController searchController;
@@ -34,6 +36,8 @@ class HistoryTextFieldWidget extends StatefulWidget {
   final Widget? prefix;
   final IconData? historyPrefixIcon;
   final IconData? deleteIcon;
+  final String? hintText;
+  final Color? backgroundColor;
 
   @override
   State<HistoryTextFieldWidget> createState() => _HistoryTextFieldWidgetState();
@@ -47,7 +51,8 @@ class _HistoryTextFieldWidgetState extends State<HistoryTextFieldWidget> {
       height: widget.height ?? context.height() * 0.07,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        // rgba(215, 236, 237, 1)
+        color: const Color(0xFFD7ECEC),
         border: Border.all(
           color: Colors.grey[100]!,
         ),
@@ -74,16 +79,13 @@ class _HistoryTextFieldWidgetState extends State<HistoryTextFieldWidget> {
         enabled: true,
         enableHistory: true,
         autocorrect: true,
-        backgroundColor: Colors.white,
+        backgroundColor: widget.backgroundColor ?? Colors.white,
         textInputAction: TextInputAction.search,
         // remove the underline
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: "Search",
-          hintStyle: const TextStyle(
-            fontSize: 16,
-            color: Colors.grey,
-          ),
+          hintText: widget.hintText ?? "Search",
+          hintStyle: const TextStyle(fontSize: 14, color: Colors.black),
           prefixIcon: widget.prefix ??
               IconButton(
                 onPressed: () {},
