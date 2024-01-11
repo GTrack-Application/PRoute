@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/old/screens/login/user_login_page.dart';
+import 'package:p_route/Global/themes/themes.dart';
+import 'package:p_route/Screens/searched_address_screen.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -30,7 +31,8 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             title: 'PRoute',
             navigatorKey: navigatorKey,
-            home: const UserLoginPage(),
+            theme: Themes.lightTheme(),
+            home: const SearchedAddressScreen(),
           ),
         );
       },

@@ -51,7 +51,7 @@ dependencies:
   pinput: ^3.0.1
   nb_utils: ^6.1.0
   dropdown_search: ^5.0.6
-  geolocator: ^10.1.0
+  # geolocator: ^10.1.0
   awesome_dialog: ^3.2.0
   page_transition: ^2.1.0
   loading_animation_widget: ^1.2.0+4
