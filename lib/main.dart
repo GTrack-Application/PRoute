@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p_route/Global/themes/themes.dart';
-import 'package:p_route/Screens/map_home_screen.dart';
+import 'package:p_route/old/screens/login/user_login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'PRoute',
       debugShowCheckedModeBanner: false,
       theme: Themes.lightTheme(),
-      home: const MapHomeScreen(),
+      home: const UserLoginPage(),
     );
   }
 }
