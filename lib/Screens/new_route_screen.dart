@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Global/common/colors/app_colors.dart';
@@ -11,28 +13,40 @@ class NewRouteScreen extends StatefulWidget {
 }
 
 class _NewRouteScreenState extends State<NewRouteScreen> {
+  String date = '';
+  String time = '';
+
+  @override
+  void initState() {
+    super.initState();
+    date = DateTime.now().toString().split(' ')[0];
+    time = DateTime.now().toString().split(' ')[1].split('.')[0];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
-            title: AppText.subHeading(
-              "New Route",
-              color: Colors.white,
-            ),
-            automaticallyImplyLeading: true,
-            actions: <Widget>[
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.question_mark_outlined,
-                  color: Colors.white,
-                ),
+          backgroundColor: AppColors.primary,
+          title: AppText.subHeading(
+            "New Route",
+            color: Colors.white,
+          ),
+          automaticallyImplyLeading: true,
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.question_mark_outlined,
+                color: Colors.white,
               ),
-            ]),
+            ),
+          ],
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
@@ -56,22 +70,31 @@ class _NewRouteScreenState extends State<NewRouteScreen> {
                 showDatePicker(
                   context: context,
                   initialDate: DateTime.now(),
-                  firstDate: DateTime(2021),
+                  firstDate: DateTime.now(),
                   lastDate: DateTime(2025),
-                );
+                ).then((value) {
+                  setState(() {
+                    date =
+                        "${value.toString().split(' ')[0]} ${value.toString().split(' ')[1].split('.')[0]}";
+                  });
+                });
               },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText.subHeading(
-                    "Route Scedule",
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  5.height,
-                  AppText.subHeading("Janauary 08, 2024    02:22 pm"),
-                ],
+              child: SizedBox(
+                width: context.width() * 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppText.subHeading(
+                      "Route Scedule",
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    5.height,
+                    AppText.subHeading(
+                        "${date.split(' ')[0]} ${time.split(':')[0]}:${time.split(':')[1]}"),
+                  ],
+                ),
               ),
             ),
             20.height,

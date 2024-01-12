@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:p_route/Global/common/colors/app_colors.dart';
 import 'package:p_route/old/screens/login/user_login_page.dart';
 
 void main() async {
@@ -27,6 +28,23 @@ class _MyAppState extends State<MyApp> {
             hideKeyboard(context);
           },
           child: MaterialApp(
+            theme: ThemeData(
+              primarySwatch: MaterialColor(
+                AppColors.primary.value,
+                const <int, Color>{
+                  50: AppColors.primary,
+                  100: AppColors.primary,
+                  200: AppColors.primary,
+                  300: AppColors.primary,
+                  400: AppColors.primary,
+                  500: AppColors.primary,
+                  600: AppColors.primary,
+                  700: AppColors.primary,
+                  800: AppColors.primary,
+                  900: AppColors.primary,
+                },
+              ),
+            ),
             debugShowCheckedModeBanner: false,
             title: 'PRoute',
             navigatorKey: navigatorKey,
