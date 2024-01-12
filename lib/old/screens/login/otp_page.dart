@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:p_route/Constants/app_icons.dart';
 import 'package:p_route/Constants/app_images.dart';
-import 'package:p_route/Global/common/utils/app_dialogs.dart';
-import 'package:p_route/Global/common/utils/app_navigator.dart';
-import 'package:p_route/Global/common/utils/app_toast.dart';
-import 'package:p_route/Global/widgets/buttons/primary_button.dart';
-import 'package:p_route/Global/widgets/text_field/icon_text_field.dart';
+import 'package:p_route/global/common/utils/app_dialogs.dart';
+import 'package:p_route/global/common/utils/app_navigator.dart';
+import 'package:p_route/global/common/utils/app_toast.dart';
+import 'package:p_route/global/widgets/buttons/primary_button.dart';
+import 'package:p_route/global/widgets/text_field/icon_text_field.dart';
 import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/old/domain/services/apis/login/login_services.dart';
 

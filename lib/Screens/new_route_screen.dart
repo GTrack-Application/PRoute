@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/Global/common/colors/app_colors.dart';
+import 'package:p_route/global/common/colors/app_colors.dart';
 import 'package:p_route/Widgets/app_text.dart';
 
 class NewRouteScreen extends StatefulWidget {
