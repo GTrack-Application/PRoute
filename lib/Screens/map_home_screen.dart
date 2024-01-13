@@ -4,7 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/global/common/colors/app_colors.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
-import 'package:p_route/Screens/enter_start_address_screen.dart';
+import 'package:p_route/Screens/start_address/enter_start_address_screen.dart';
 import 'package:p_route/Screens/route_settings_screen.dart';
 import 'package:p_route/Widgets/app_drawer.dart';
 import 'package:p_route/Widgets/app_text.dart';

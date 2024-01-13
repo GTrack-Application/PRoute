@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:input_history_text_field/input_history_text_field.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:p_route/Screens/start_address/ocr_scanning_screen.dart';
 import 'package:p_route/Widgets/history_text_feild_widget.dart';
+import 'package:p_route/global/common/utils/app_navigator.dart';
 
 class StartAddressScreen extends StatefulWidget {
   const StartAddressScreen({super.key});
@@ -66,7 +68,14 @@ class _StartAddressScreenState extends State<StartAddressScreen> {
                       ),
                       10.width,
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          AppNavigator.goToPage(
+                            context: context,
+                            screen: const OCRScanningScreen(
+                              title: "Scan Address",
+                            ),
+                          );
+                        },
                         child: const Icon(
                           Icons.camera_alt,
                           color: Colors.black,
@@ -78,51 +87,49 @@ class _StartAddressScreenState extends State<StartAddressScreen> {
                 ),
                 10.height,
                 isSearched == true
-                    ? Container(
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              onTap: () {},
-                              leading: Column(
-                                children: [
-                                  const Icon(
-                                    Icons.location_on,
+                    ? ListView.separated(
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            onTap: () {},
+                            leading: Column(
+                              children: [
+                                const Icon(
+                                  Icons.location_on,
+                                  color: Colors.black,
+                                ),
+                                5.height,
+                                const Text(
+                                  '36.3 mi',
+                                  style: TextStyle(
                                     color: Colors.black,
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  5.height,
-                                  const Text(
-                                    '36.3 mi',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 13.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              title: const Text(
-                                '20 West 34rth Street',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
                                 ),
+                              ],
+                            ),
+                            title: const Text(
+                              '20 West 34rth Street',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
                               ),
-                              subtitle: const Text(
-                                'New York NY USA',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16.0,
-                                ),
+                            ),
+                            subtitle: const Text(
+                              'New York NY USA',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16.0,
                               ),
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return const Divider(color: Colors.black);
-                          },
-                          itemCount: 5,
-                        ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return const Divider(color: Colors.black);
+                        },
+                        itemCount: 5,
                       )
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.start,
