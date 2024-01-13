@@ -38,56 +38,59 @@ class _OCRScanningScreenState extends State<OCRScanningScreen> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                leading: Image.asset("assets/icons/location_icon.png"),
-                title: const Text(
-                  "Scan Address",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  leading: Image.asset("assets/icons/location_icon.png"),
+                  title: const Text(
+                    "Scan Address",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                subtitle: const Text(
-                  "Make sure the address fits with the scanner frame and tap on the capture button with the adress is recognised.",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+                  subtitle: const Text(
+                    "Make sure the address fits with the scanner frame and tap on the capture button with the adress is recognised.",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
-            ),
-            40.height,
-            ScalableOCR(
-              paintboxCustom: Paint()
-                ..style = PaintingStyle.stroke
-                ..strokeWidth = 4.0
-                ..color = const Color.fromARGB(153, 102, 160, 241),
-              boxLeftOff: 5,
-              boxBottomOff: 2.5,
-              boxRightOff: 5,
-              boxTopOff: 2.5,
-              boxHeight: MediaQuery.of(context).size.height / 3,
-              getRawData: (value) {
-                inspect(value);
-              },
-              getScannedText: (value) {
-                setText(value);
-              },
-            ),
-            StreamBuilder<String>(
-              stream: controller.stream,
-              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                return Result(
-                  text: snapshot.data != null ? snapshot.data! : "",
-                );
-              },
-            )
-          ],
+              40.height,
+              ScalableOCR(
+                paintboxCustom: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = 4.0
+                  ..color = const Color.fromARGB(153, 102, 160, 241),
+                boxLeftOff: 5,
+                boxBottomOff: 2.5,
+                boxRightOff: 5,
+                boxTopOff: 2.5,
+                boxHeight: MediaQuery.of(context).size.height / 3,
+                getRawData: (value) {
+                  inspect(value);
+                },
+                getScannedText: (value) {
+                  setText(value);
+                },
+              ),
+              StreamBuilder<String>(
+                stream: controller.stream,
+                builder:
+                    (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  return Result(
+                    text: snapshot.data != null ? snapshot.data! : "",
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

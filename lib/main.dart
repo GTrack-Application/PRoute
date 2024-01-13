@@ -9,8 +9,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-// main file
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
   @override
