@@ -42,22 +42,28 @@ class _SearchedAddressScreenState extends State<SearchedAddressScreen> {
             leading: Icon(LineIcons.building),
             title: Text("Floor"),
           ),
+          const Divider(),
           const ListTile(
             leading: Icon(LineIcons.tag),
             title: Text("Field Service"),
           ),
+          const Divider(),
+
           const ListTile(
             leading: Icon(LineIcons.phone),
             title: Text("+23005447070"),
           ),
+          const Divider(),
           const ListTile(
             leading: Icon(LineIcons.check),
             title: Text("Stop Time"),
           ),
+          const Divider(),
           const ListTile(
             leading: Icon(LineIcons.clock),
             title: Text("Visit Duration"),
           ),
+          const Divider(),
         ],
       ),
       bottomNavigationBar: Row(
