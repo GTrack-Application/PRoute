@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/Global/common/colors/app_colors.dart';
-import 'package:p_route/Global/common/utils/app_navigator.dart';
+import 'package:p_route/global/common/colors/app_colors.dart';
+import 'package:p_route/global/common/utils/app_navigator.dart';
 import 'package:p_route/Screens/new_route_screen.dart';
 import 'package:p_route/Widgets/app_text.dart';
 

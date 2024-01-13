@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:p_route/Global/common/colors/app_colors.dart';
+import 'package:p_route/global/common/colors/app_colors.dart';
 
 class DropDownWidget extends StatelessWidget {
   const DropDownWidget({

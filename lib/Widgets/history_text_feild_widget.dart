@@ -64,7 +64,7 @@ class _HistoryTextFieldWidgetState extends State<HistoryTextFieldWidget> {
         onSubmitted: widget.onSubmitted,
         onTap: widget.onTap,
         historyKey: "01",
-        limit: 5,
+        limit: 10,
         textEditingController: widget.searchController,
         focusNode: widget.searchFocusNode,
         historyIconColor: Colors.black,
@@ -80,7 +80,8 @@ class _HistoryTextFieldWidgetState extends State<HistoryTextFieldWidget> {
         enableHistory: true,
         autocorrect: true,
         backgroundColor: widget.backgroundColor ?? Colors.white,
-        textInputAction: TextInputAction.search,
+        textInputAction: TextInputAction.search, 
+      
         // remove the underline
         decoration: InputDecoration(
           border: InputBorder.none,
