@@ -3,11 +3,10 @@ on:
     branches:
       - main
       - master
-  push:
-    branches:
-      - main
-      - master
-      - dev
+#   push:
+#     branches:
+    #   - main
+    #   - master
 name: "Build & Release"
 jobs:
   build:
