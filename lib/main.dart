@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/Screens/route_management/route_management_screen.dart';
+import 'package:p_route/Screens/home/home_screen.dart';
 import 'package:p_route/global/themes/themes.dart';
 
 void main() async {
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             title: 'PRoute',
             navigatorKey: navigatorKey,
-            home: const RouteManagementScreen(),
+            home: const HomeScreen(),
           ),
         );
       },

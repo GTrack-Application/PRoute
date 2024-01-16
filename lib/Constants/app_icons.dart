@@ -1,6 +1,6 @@
 class AppIcons {
   // route management
-  static const rm = 'assets/icons/route_management';
+  static const rm = 'assets/icons';
   static const assignUser = '$rm/assign_user.png';
   static const deleteRoute = '$rm/delete_route.png';
   static const exportRoute = '$rm/export_route.png';
