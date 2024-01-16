@@ -7,7 +7,6 @@ import 'package:p_route/global/common/colors/app_colors.dart';
 import 'package:p_route/global/common/utils/app_dialogs.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 import 'package:p_route/global/common/utils/app_snakbars.dart';
-import 'package:p_route/global/components/app_logo.dart';
 import 'package:p_route/global/widgets/buttons/primary_button.dart';
 import 'package:p_route/global/widgets/drop_down/drop_down_widget.dart';
 import 'package:p_route/global/widgets/text_field/icon_text_field.dart';
@@ -149,8 +148,8 @@ class _UserLoginPageState extends State<UserLoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppLogo(width: 180, height: 180),
-                const SizedBox(height: 20),
+                // const AppLogo(width: 180, height: 180),
+                const SizedBox(height: 30),
                 const Text(
                   'User Type',
                   style: TextStyle(

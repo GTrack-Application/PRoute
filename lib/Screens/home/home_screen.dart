@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/Screens/route_management/route_management_screen.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 
@@ -93,6 +94,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("Plan routes"),
             ),
             GestureDetector(
+              onTap: () {
+                AppNavigator.goToPage(
+                    context: context, screen: MapHomeScreen());
+              },
               child: Text("Routes map"),
             ),
             GestureDetector(

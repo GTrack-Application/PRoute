@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:p_route/Constants/app_icons.dart';
 import 'package:p_route/Constants/app_images.dart';
+import 'package:p_route/Screens/home/home_screen.dart';
 import 'package:p_route/global/common/utils/app_dialogs.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 import 'package:p_route/global/common/utils/app_toast.dart';
@@ -62,7 +63,7 @@ class _OtpPageState extends State<OtpPage> {
         AppDialogs.closeDialog();
 
         // Get.toNamed(MenuPage.pageName);
-        AppNavigator.replaceTo(context: context, screen: const MapHomeScreen());
+        AppNavigator.replaceTo(context: context, screen: const HomeScreen());
       } catch (e) {
         AppDialogs.closeDialog();
         AppToast.danger(e.toString());
