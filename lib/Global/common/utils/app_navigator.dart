@@ -23,4 +23,8 @@ class AppNavigator {
       ),
     );
   }
+
+  static goBack(BuildContext context) {
+    return Navigator.pop(context);
+  }
 }

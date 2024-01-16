@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/Screens/searched_address_screen.dart';
-import 'package:p_route/global/common/utils/app_navigator.dart';
 
 class AddressScannerOptionScreen extends StatefulWidget {
   const AddressScannerOptionScreen({
@@ -58,15 +56,15 @@ class _AddressScannerOptionScreenState
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    AppNavigator.replaceTo(
-                      context: context,
-                      screen: SearchedAddressScreen(
-                        scannedAddress: widget.scannedAddress,
-                        scanningMode: _value == 1
-                            ? "Manual Scanning Mode"
-                            : "Automatic Scanning Mode",
-                      ),
-                    );
+                    // AppNavigator.replaceTo(
+                    //   context: context,
+                    //   screen: SearchedAddressScreen(
+                    //     scannedAddress: widget.scannedAddress,
+                    //     scanningMode: _value == 1
+                    //         ? "Manual Scanning Mode"
+                    //         : "Automatic Scanning Mode",
+                    //   ),
+                    // );
                   },
                   child: Container(
                     margin: const EdgeInsets.all(100),

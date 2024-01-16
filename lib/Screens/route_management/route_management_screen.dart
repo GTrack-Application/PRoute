@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Constants/app_icons.dart';
+import 'package:p_route/Screens/searched_address_screen.dart';
+import 'package:p_route/global/common/utils/app_navigator.dart';
 
 class RouteManagementScreen extends StatefulWidget {
   const RouteManagementScreen({Key? key}) : super(key: key);
@@ -10,7 +12,7 @@ class RouteManagementScreen extends StatefulWidget {
 }
 
 class _RouteManagementScreenState extends State<RouteManagementScreen> {
-  late List<Map<String, String>> screens;
+  late List<Map<String, dynamic>> screens;
 
   @override
   void initState() {
@@ -26,6 +28,12 @@ class _RouteManagementScreenState extends State<RouteManagementScreen> {
       {
         'title': 'Re-optimized Route',
         'icon': AppIcons.reoptimizeRoute,
+        'onClick': () {
+          AppNavigator.goToPage(
+            context: context,
+            screen: const SearchedAddressScreen(),
+          );
+        },
       },
       {
         'title': 'Assign User',
@@ -66,27 +74,34 @@ class _RouteManagementScreenState extends State<RouteManagementScreen> {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         children: screens
-            .map((e) => Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(e['icon'].toString()),
-                      16.height,
-                      Text(e['title'].toString()),
-                    ],
+            .map((e) => GestureDetector(
+                  onTap: () {
+                    if (e.containsKey('onClick')) {
+                      e['onClick']();
+                    }
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(e['icon'].toString()),
+                        16.height,
+                        Text(e['title'].toString()),
+                      ],
+                    ),
                   ),
                 ))
             .toList(),

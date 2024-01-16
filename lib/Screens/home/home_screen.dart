@@ -58,10 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Manage Territories",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("Plan & route territories"),
+            child: const Text("Plan & route territories"),
           ),
           GestureDetector(
-            child: Text("Orders by terrirories"),
+            child: const Text("Orders by terrirories"),
           ),
         ],
       ),
@@ -70,10 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Geofencing",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("Zone restrictions"),
+            child: const Text("Zone restrictions"),
           ),
           GestureDetector(
-            child: Text("Zone terrirories"),
+            child: const Text("Zone terrirories"),
           ),
         ],
       ),
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Manage Vehicles",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("Add / Update / Remove"),
+            child: const Text("Add / Update / Remove"),
           ),
         ],
       ),
@@ -91,17 +91,17 @@ class _HomeScreenState extends State<HomeScreen> {
           title: "Route Management",
           subTitles: <Widget>[
             GestureDetector(
-              child: Text("Plan routes"),
+              child: const Text("Plan routes"),
             ),
             GestureDetector(
               onTap: () {
                 AppNavigator.goToPage(
-                    context: context, screen: MapHomeScreen());
+                    context: context, screen: const MapHomeScreen());
               },
-              child: Text("Routes map"),
+              child: const Text("Routes map"),
             ),
             GestureDetector(
-              child: Text("Dispatch routes"),
+              child: const Text("Dispatch routes"),
             ),
           ],
           iconTap: () {
@@ -115,13 +115,13 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Delivery Management",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("List of orders"),
+            child: const Text("List of orders"),
           ),
           GestureDetector(
-            child: Text("Manual order creation"),
+            child: const Text("Manual order creation"),
           ),
           GestureDetector(
-            child: Text("Load and unload orders"),
+            child: const Text("Load and unload orders"),
           ),
         ],
       ),
@@ -130,10 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Drivers Management",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("Add driver"),
+            child: const Text("Add driver"),
           ),
           GestureDetector(
-            child: Text("Update driver"),
+            child: const Text("Update driver"),
           ),
         ],
       ),
@@ -142,10 +142,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Users Management",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("Add user"),
+            child: const Text("Add user"),
           ),
           GestureDetector(
-            child: Text("Update user"),
+            child: const Text("Update user"),
           ),
         ],
       ),
@@ -154,19 +154,19 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Notifications",
         subTitles: <Widget>[
           GestureDetector(
-            child: Text("Route notifications"),
+            child: const Text("Route notifications"),
           ),
           GestureDetector(
-            child: Text("Completed notifications"),
+            child: const Text("Completed notifications"),
           ),
           GestureDetector(
-            child: Text("Customer notifications"),
+            child: const Text("Customer notifications"),
           ),
           GestureDetector(
-            child: Text("Geofence notifications"),
+            child: const Text("Geofence notifications"),
           ),
           GestureDetector(
-            child: Text("history"),
+            child: const Text("history"),
           ),
         ],
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Constants/app_icons.dart';
 import 'package:p_route/Constants/app_preferences.dart';
-import 'package:p_route/Screens/map_home_screen.dart';
+import 'package:p_route/Screens/home/home_screen.dart';
 import 'package:p_route/global/common/colors/app_colors.dart';
 import 'package:p_route/global/common/utils/app_dialogs.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
@@ -86,7 +86,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
 
       AppDialogs.closeDialog();
       AppSnackbars.success(context, "Login Successful", 2);
-      AppNavigator.replaceTo(context: context, screen: const MapHomeScreen());
+      AppNavigator.replaceTo(context: context, screen: const HomeScreen());
     }).onError((error, stackTrace) {
       AppDialogs.closeDialog();
       AppSnackbars.danger(context, error.toString());
@@ -108,7 +108,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
 
       AppDialogs.closeDialog();
       AppSnackbars.success(context, "Login Successful", 2);
-      AppNavigator.replaceTo(context: context, screen: const MapHomeScreen());
+      AppNavigator.replaceTo(context: context, screen: const HomeScreen());
     }).onError((error, stackTrace) {
       AppDialogs.closeDialog();
       AppSnackbars.danger(context, error.toString());
