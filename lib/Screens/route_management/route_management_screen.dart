@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:p_route/Constants/app_icons.dart';
 
 class RouteManagementScreen extends StatefulWidget {
   const RouteManagementScreen({Key? key}) : super(key: key);
@@ -15,35 +16,35 @@ class _RouteManagementScreenState extends State<RouteManagementScreen> {
     screens = [
       {
         'title': 'Plan New Route',
-        'route': '/add_route',
+        'icon': AppIcons.planNewRoute,
       },
       {
         'title': 'Route Settings',
-        'route': '/add_stop',
+        'icon': AppIcons.routeSettings,
       },
       {
         'title': 'Re-optimized Route',
-        'route': '/add_route_stop',
+        'icon': AppIcons.reoptimizeRoute,
       },
       {
         'title': 'Assign User',
-        'route': '/add_route_stop_schedule',
+        'icon': AppIcons.assignUser,
       },
       {
         'title': 'Refresh Route',
-        'route': '/add_route_stop_schedule',
+        'icon': AppIcons.refreshRoute,
       },
       {
         'title': 'Share Route',
-        'route': '/add_route_stop_schedule',
+        'icon': AppIcons.shareRoute,
       },
       {
         'title': 'Export Route',
-        'route': '/add_route_stop_schedule',
+        'icon': AppIcons.exportRoute,
       },
       {
         'title': 'Delete Route',
-        'route': '/add_route_stop_schedule',
+        'icon': AppIcons.deleteRoute,
       },
     ];
     super.initState();

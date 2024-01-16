@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -56,6 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (context, index) {
           return HomeIconWidget(
             icon: iconsNameList[index],
+            buttons: [],
+            title: "",
           );
         },
       ),
