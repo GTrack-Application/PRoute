@@ -177,6 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('PRoute Logistics System'),
         centerTitle: true,
@@ -192,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 0.6,
+                childAspectRatio: 0.5,
                 crossAxisSpacing: 5.0,
                 mainAxisSpacing: 0,
               ),

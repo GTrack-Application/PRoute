@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
+  // rgba(53, 15, 159, 1)
   static const Color primary = Color(0xFF350F9F);
   // rgba(55, 165, 105, 1)
   static const Color dartGreen = Color.fromRGBO(55, 165, 105, 1);
