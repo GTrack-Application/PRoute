@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/Screens/assign/assign_screen1.dart';
-import 'package:p_route/Screens/route_management/route_management_screen.dart';
 import 'package:p_route/global/themes/themes.dart';
 import 'package:p_route/old/screens/login/user_login_page.dart';
 
