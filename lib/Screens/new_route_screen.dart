@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/global/common/colors/app_colors.dart';
+import 'package:p_route/Global/common/utils/app_navigator.dart';
+import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/Widgets/app_text.dart';
+import 'package:p_route/global/common/colors/app_colors.dart';
 
 class NewRouteScreen extends StatefulWidget {
   const NewRouteScreen({super.key});
@@ -133,7 +135,12 @@ class _NewRouteScreenState extends State<NewRouteScreen> {
               child: Container(
                 alignment: Alignment.bottomLeft,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    AppNavigator.goToPage(
+                      context: context,
+                      screen: const MapHomeScreen(),
+                    );
+                  },
                   child: Material(
                     elevation: 5,
                     child: Container(

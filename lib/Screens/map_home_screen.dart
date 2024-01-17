@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/global/common/colors/app_colors.dart';
-import 'package:p_route/global/common/utils/app_navigator.dart';
-import 'package:p_route/Screens/start_address/start_address_screen.dart';
 import 'package:p_route/Screens/route_settings_screen.dart';
+import 'package:p_route/Screens/start_address/start_address_screen.dart';
 import 'package:p_route/Widgets/app_drawer.dart';
 import 'package:p_route/Widgets/app_text.dart';
+import 'package:p_route/global/common/colors/app_colors.dart';
+import 'package:p_route/global/common/utils/app_navigator.dart';
 
 class MapHomeScreen extends StatefulWidget {
   const MapHomeScreen({super.key});
@@ -124,6 +124,12 @@ class _MapHomeScreenState extends State<MapHomeScreen> {
                   child: Row(
                     children: [
                       GestureDetector(
+                        onTap: () {
+                          AppNavigator.goToPage(
+                            context: context,
+                            screen: const RouteSettingsScreen(),
+                          );
+                        },
                         child: Container(
                           color: const Color.fromRGBO(217, 217, 217, 1),
                           height: context.height(),

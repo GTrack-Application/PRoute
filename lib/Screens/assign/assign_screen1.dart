@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Global/common/colors/app_colors.dart';
+import 'package:p_route/Global/common/utils/app_navigator.dart';
+import 'package:p_route/Screens/new_route_screen.dart';
 import 'package:p_route/Widgets/app_drawer.dart';
 
 class AssignScreen1 extends StatefulWidget {
@@ -135,6 +137,20 @@ class _AssignScreen1State extends State<AssignScreen1> {
                     const Center(child: Text('All Routes')),
                   ],
                 ),
+                bottomNavigationBar: Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      AppNavigator.goToPage(
+                        context: context,
+                        screen: const NewRouteScreen(),
+                      );
+                    },
+                    icon: const Icon(Icons.abc),
+                    label: const Text("Add new route"),
+                  ),
+                ),
               ),
             ),
             ListView(
@@ -142,7 +158,7 @@ class _AssignScreen1State extends State<AssignScreen1> {
                 const TextField(
                   decoration: InputDecoration(
                     hintText: 'Search user by name | email',
-                    prefixIcon: const Icon(Icons.search),
+                    prefixIcon: Icon(Icons.search),
                   ),
                 ),
                 20.height,
