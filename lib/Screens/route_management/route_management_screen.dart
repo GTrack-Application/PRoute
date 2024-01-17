@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Constants/app_icons.dart';
+import 'package:p_route/Screens/assign/assign_screen1.dart';
 import 'package:p_route/Screens/searched_address_screen.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 
@@ -38,6 +39,13 @@ class _RouteManagementScreenState extends State<RouteManagementScreen> {
       {
         'title': 'Assign User',
         'icon': AppIcons.assignUser,
+        'onClick': () {
+          AppNavigator.goToPage(
+            context: context,
+            screen: const AssignScreen1(),
+          );
+        
+        }
       },
       {
         'title': 'Refresh Route',
