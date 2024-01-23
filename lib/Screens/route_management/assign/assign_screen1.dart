@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Global/common/colors/app_colors.dart';
 import 'package:p_route/Global/common/utils/app_navigator.dart';
+import 'package:p_route/Screens/hold_to_start_route_screen.dart';
 import 'package:p_route/Screens/new_route_screen.dart';
 import 'package:p_route/Widgets/app_drawer.dart';
 
@@ -29,7 +30,12 @@ class _AssignScreen1State extends State<AssignScreen1> {
             children: [
               ListTile(
                 title: const Text('Open Route'),
-                onTap: () {},
+                onTap: () {
+                  AppNavigator.goToPage(
+                    context: context,
+                    screen: const HoldToStartRouteScreen(),
+                  );
+                },
               ),
               ListTile(
                 title: const Text('Change Start Time'),
@@ -147,8 +153,8 @@ class _AssignScreen1State extends State<AssignScreen1> {
                         screen: const NewRouteScreen(),
                       );
                     },
-                    icon: const Icon(Icons.abc),
-                    label: const Text("Add new route"),
+                    icon: const Icon(Icons.add_box_rounded),
+                    label: const Text("Add New Route"),
                   ),
                 ),
               ),
