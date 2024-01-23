@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Screens/map_home_screen.dart';
@@ -33,9 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget>? subTitles,
   }) {
     return {
-      'icon': GestureDetector(
+      'icon': InkWell(
         onTap: iconTap ?? () {},
-        child: CircleAvatar(radius: 40, child: Image.asset(iconImage)),
+        child: CircleAvatar(
+          radius: 40,
+          child: Image.asset(iconImage, fit: BoxFit.contain),
+        ),
       ),
       'title': Text(
         title,
@@ -57,10 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[2],
         title: "Manage Territories",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("Plan & route territories"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Orders by terrirories"),
           ),
         ],
@@ -69,10 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[3],
         title: "Geofencing",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("Zone restrictions"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Zone terrirories"),
           ),
         ],
@@ -81,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[4],
         title: "Manage Vehicles",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("Add / Update / Remove"),
           ),
         ],
@@ -90,17 +95,17 @@ class _HomeScreenState extends State<HomeScreen> {
           iconImage: iconsNameList[5],
           title: "Route Management",
           subTitles: <Widget>[
-            GestureDetector(
+            InkWell(
               child: const Text("Plan routes"),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {
                 AppNavigator.goToPage(
                     context: context, screen: const MapHomeScreen());
               },
               child: const Text("Routes map"),
             ),
-            GestureDetector(
+            InkWell(
               child: const Text("Dispatch routes"),
             ),
           ],
@@ -114,13 +119,13 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[6],
         title: "Delivery Management",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("List of orders"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Manual order creation"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Load and unload orders"),
           ),
         ],
@@ -129,10 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[7],
         title: "Drivers Management",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("Add driver"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Update driver"),
           ),
         ],
@@ -141,10 +146,10 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[8],
         title: "Users Management",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("Add user"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Update user"),
           ),
         ],
@@ -153,19 +158,19 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[9],
         title: "Notifications",
         subTitles: <Widget>[
-          GestureDetector(
+          InkWell(
             child: const Text("Route notifications"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Completed notifications"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Customer notifications"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("Geofence notifications"),
           ),
-          GestureDetector(
+          InkWell(
             child: const Text("history"),
           ),
         ],
@@ -177,6 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('PRoute Logistics System'),
         centerTitle: true,
@@ -192,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 0.6,
+                childAspectRatio: 0.5,
                 crossAxisSpacing: 5.0,
                 mainAxisSpacing: 0,
               ),

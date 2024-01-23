@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Screens/start_address/start_address_screen.dart';
+import 'package:p_route/Widgets/app_drawer.dart';
 import 'package:p_route/Widgets/app_text.dart';
 import 'package:p_route/global/common/colors/app_colors.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
@@ -17,9 +18,12 @@ class SearchedAddressScreen extends StatefulWidget {
 }
 
 class _SearchedAddressScreenState extends State<SearchedAddressScreen> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      drawer: const AppDrawerWidget(),
       // appBar: AppBar(),
       body: SafeArea(
         child: Column(
@@ -39,26 +43,174 @@ class _SearchedAddressScreenState extends State<SearchedAddressScreen> {
                     compassEnabled: true,
                     indoorViewEnabled: true,
                   ),
-                  // back button
                   Positioned(
-                      child: IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  )),
+                    top: 10,
+                    left: 10,
+                    right: 10,
+                    child: Container(
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.menu),
+                            onPressed: () {
+                              scaffoldKey.currentState!.openDrawer();
+                            },
+                          ),
+                          const Row(
+                            children: <Widget>[
+                              Icon(
+                                Ionicons.location_outline,
+                              ),
+                              Text("15")
+                            ],
+                          ),
+                          const Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.timer_outlined,
+                              ),
+                              Text("12:20")
+                            ],
+                          ),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                            ),
+                            child: PopupMenuButton(
+                              surfaceTintColor: Colors.white,
+                              itemBuilder: (ctx) {
+                                return [
+                                  // plane new route
+                                  PopupMenuItem(
+                                    value: 1,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.gesture_outlined),
+                                        5.width,
+                                        AppText.normal("Plan New Route"),
+                                      ],
+                                    ),
+                                  ),
+                                  // import addresses
+                                  PopupMenuItem(
+                                    value: 3,
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                            Icons.import_export_outlined),
+                                        5.width,
+                                        AppText.normal("Import Addresses"),
+                                      ],
+                                    ),
+                                  ),
+                                  // route settings
+                                  PopupMenuItem(
+                                    value: 2,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.settings_outlined),
+                                        5.width,
+                                        AppText.normal("Route Settings"),
+                                      ],
+                                    ),
+                                  ),
+                                  // Re-optimised route
+                                  PopupMenuItem(
+                                    value: 4,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.settings_outlined),
+                                        5.width,
+                                        AppText.normal("Re-optimised route"),
+                                      ],
+                                    ),
+                                  ),
+                                  // Assign User
+                                  PopupMenuItem(
+                                    value: 5,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.people_alt_outlined),
+                                        5.width,
+                                        AppText.normal("Assign User"),
+                                      ],
+                                    ),
+                                  ),
+                                  // Refresh Route
+                                  PopupMenuItem(
+                                    value: 6,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.refresh_outlined),
+                                        5.width,
+                                        AppText.normal("Refresh Route"),
+                                      ],
+                                    ),
+                                  ),
+                                  // Share Route
+                                  PopupMenuItem(
+                                    value: 7,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.share_outlined),
+                                        5.width,
+                                        AppText.normal("Share Route"),
+                                      ],
+                                    ),
+                                  ),
+                                  // Export Route
+                                  PopupMenuItem(
+                                    value: 8,
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                            Ionicons.document_text_outline),
+                                        5.width,
+                                        AppText.normal("Export Route"),
+                                      ],
+                                    ),
+                                  ),
+                                  // Delete Route
+                                  PopupMenuItem(
+                                    value: 9,
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.delete_outline),
+                                        5.width,
+                                        AppText.normal("Delete Route"),
+                                      ],
+                                    ),
+                                  ),
+                                ];
+                              },
+                              onSelected: (value) {
+                                if (value == 1) {
+                                } else if (value == 2) {}
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   Positioned(
-                    bottom: 1,
-                    left: 0,
-                    right: 0,
+                    bottom: 0,
+                    left: 1,
+                    right: 10,
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 32,
+                      margin: const EdgeInsets.only(
+                        left: 1,
+                        right: 50,
+                        bottom: 2,
                       ),
                       child: Row(
                         children: [
@@ -78,9 +230,9 @@ class _SearchedAddressScreenState extends State<SearchedAddressScreen> {
                           ),
                           const Spacer(),
                           const Icon(Icons.mic),
-                          5.width,
+                          10.width,
                           const Icon(Ionicons.camera),
-                          5.width,
+                          10.width,
                         ],
                       ),
                     ),

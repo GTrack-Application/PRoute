@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Screens/route_settings_screen.dart';
+import 'package:p_route/Screens/searched_address_screen.dart';
 import 'package:p_route/Screens/start_address/start_address_screen.dart';
 import 'package:p_route/Widgets/app_drawer.dart';
 import 'package:p_route/Widgets/app_text.dart';
@@ -144,7 +145,11 @@ class _MapHomeScreenState extends State<MapHomeScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          AppNavigator.goToPage(
+                              context: context,
+                              screen: const SearchedAddressScreen());
+                        },
                         child: Container(
                           color: AppColors.dartGreen,
                           height: context.height(),
