@@ -158,21 +158,11 @@ class _HomeScreenState extends State<HomeScreen> {
         iconImage: iconsNameList[9],
         title: "Notifications",
         subTitles: <Widget>[
-          InkWell(
-            child: const Text("Route notifications"),
-          ),
-          InkWell(
-            child: const Text("Completed notifications"),
-          ),
-          InkWell(
-            child: const Text("Customer notifications"),
-          ),
-          InkWell(
-            child: const Text("Geofence notifications"),
-          ),
-          InkWell(
-            child: const Text("history"),
-          ),
+          InkWell(child: const Text("Route notifications")),
+          InkWell(child: const Text("Completed notifications")),
+          InkWell(child: const Text("Customer notifications")),
+          InkWell(child: const Text("Geofence notifications")),
+          InkWell(child: const Text("history")),
         ],
       ),
     ];
