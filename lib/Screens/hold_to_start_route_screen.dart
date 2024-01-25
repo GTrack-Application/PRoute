@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -183,7 +182,6 @@ class _HoldToStartRouteScreenState extends State<HoldToStartRouteScreen> {
                                   ? Expanded(
                                       child: ButtonWidget(
                                         text: "Arrived",
-                                        // rgba(87, 170, 175, 1)
                                         backgroundColor:
                                             const Color(0xFF57AAAF),
                                         icon: Icons.check,

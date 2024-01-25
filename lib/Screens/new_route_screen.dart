@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Global/common/utils/app_navigator.dart';
 import 'package:p_route/Screens/finish_route_screen.dart';
-import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/Widgets/app_text.dart';
 import 'package:p_route/global/common/colors/app_colors.dart';
 
