@@ -36,7 +36,7 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
             ),
             const ListTile(
-              title: Text("Streer"),
+              title: Text("Street"),
               subtitle: Text("New York City"),
               trailing: Icon(Icons.more_vert_outlined),
             ),
