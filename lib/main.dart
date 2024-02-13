@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:p_route/Screens/view_orders_screen.dart';
+import 'package:p_route/Screens/manage_vehicle_screen.dart';
 import 'package:p_route/global/themes/themes.dart';
 
 void main() async {
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             title: 'PRoute',
             navigatorKey: navigatorKey,
-            home: const ViewOrdersScreen(),
+            home: const ManageVehicleScreen(),
           ),
         );
       },

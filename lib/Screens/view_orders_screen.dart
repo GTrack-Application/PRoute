@@ -56,16 +56,17 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
             20.height,
             const Divider(),
             Expanded(
-                child: ListView.builder(
-              itemBuilder: (context, index) {
-                return const ListTile(
-                  title: Text("Houseton Order"),
-                  subtitle: Text("Hello"),
-                  trailing: CircleAvatar(),
-                );
-              },
-              itemCount: 10,
-            ))
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return const ListTile(
+                    title: Text("Houseton Order"),
+                    subtitle: Text("Hello"),
+                    trailing: CircleAvatar(),
+                  );
+                },
+                itemCount: 10,
+              ),
+            ),
           ],
         ),
       ),
