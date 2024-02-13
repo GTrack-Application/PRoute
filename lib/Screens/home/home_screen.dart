@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:p_route/Global/common/colors/app_colors.dart';
 import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/Screens/route_management/route_management_screen.dart';
 import 'package:p_route/Screens/territory/territory_screen.dart';
+import 'package:p_route/Widgets/button_widget.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,7 +64,40 @@ class _HomeScreenState extends State<HomeScreen> {
       fun(
         iconImage: iconsNameList[2],
         iconTap: () {
-          AppNavigator.goToPage(context: context, screen: TerritoryScreen());
+          // show dialog to select territory
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ButtonWidget(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        AppNavigator.goToPage(
+                          context: context,
+                          screen: TerritoryScreen(),
+                        );
+                      },
+                      backgroundColor: AppColors.primary,
+                      text: 'Plan & route territories',
+                    ),
+                    ButtonWidget(
+                      onPressed: () {},
+                      backgroundColor: AppColors.primary,
+                      text: 'Orders by Territory',
+                    ),
+                    ButtonWidget(
+                      onPressed: () {},
+                      backgroundColor: AppColors.primary,
+                      text: 'View Orders',
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
         },
         title: "Manage Territories",
         subTitles: <Widget>[
