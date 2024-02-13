@@ -168,7 +168,6 @@ class _AssignScreen1State extends State<AssignScreen1> {
                   ),
                 ),
                 20.height,
-                // come from API
                 routeListTile(title: "Route 1"),
                 routeListTile(title: "Route 2"),
                 routeListTile(title: "Route 3"),
