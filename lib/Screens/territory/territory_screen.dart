@@ -18,39 +18,75 @@ class _TerritoryScreenState extends State<TerritoryScreen> {
   final Set<Polygon> _polygons = {};
   final Set<Marker> _markers = {}; // Set to hold markers
 
-  TextEditingController searchController = TextEditingController();
+  TextEditingController searchAddressController = TextEditingController();
+  TextEditingController searchTerritoryController = TextEditingController();
   FocusNode searchNode = FocusNode();
 
   bool switchValue = true;
+
+  Map<String, List<dynamic>>? iconsAndFunction;
+
+  var iconColor = [
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.white,
+  ];
+
+  List<LatLng> territory1Coords = [
+    const LatLng(40.7128, -74.0060),
+    const LatLng(40.7355, -74.0019),
+    const LatLng(40.7308, -73.9973),
+    const LatLng(40.7138, -74.0100),
+    const LatLng(40.7130, -74.0200),
+  ];
+
+  List<LatLng> territory2Coords = [
+    const LatLng(42.7128, -75.0060),
+    const LatLng(42.7355, -75.0079),
+    const LatLng(42.7308, -75.9973),
+    const LatLng(42.7138, -75.0080),
+    const LatLng(42.7130, -75.0090),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    iconsAndFunction = {
+      "icon1": [
+        Icons.back_hand_outlined,
+        () {},
+      ],
+      "icon2": [
+        Icons.area_chart_outlined,
+        () {},
+      ],
+      "icon3": [
+        Icons.rectangle_outlined,
+        () {},
+      ],
+      "icon4": [
+        Icons.circle_outlined,
+        () {},
+      ],
+      "icon5": [
+        Icons.cancel_presentation,
+        () {},
+      ],
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(title: const Text('Orders By Territory')),
-      bottomNavigationBar: GestureDetector(
-        onTap: () {},
-        child: Container(
-          width: context.width() * 0.4,
-          color: Colors.grey[300],
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                "Territory Counts",
-                style: TextStyle(fontSize: 15, color: AppColors.primary),
-              ),
-              10.width,
-              const Icon(Icons.fullscreen)
-            ],
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Text for Address Book Map/ Generate Order
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
@@ -62,6 +98,7 @@ class _TerritoryScreenState extends State<TerritoryScreen> {
                 ),
               ),
             ),
+            // Row for Add New Addresses and Search in Address Book
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Row(
@@ -103,7 +140,7 @@ class _TerritoryScreenState extends State<TerritoryScreen> {
                       color: Colors.white,
                     ),
                     child: AppTextFieldWidget(
-                      controller: searchController,
+                      controller: searchAddressController,
                       focusNode: searchNode,
                       width: context.width() * 0.5,
                       hint: ' Search in Address Book',
@@ -117,68 +154,270 @@ class _TerritoryScreenState extends State<TerritoryScreen> {
               ),
             ),
             10.height,
+            // Row for Hide Territorries and Switch
             Row(
               children: [
-                const Expanded(flex: 1, child: CustomSwitch()),
+                const Expanded(
+                  flex: 3,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: CustomSwitch(),
+                  ),
+                ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Column(
                     children: <Widget>[
                       const Text("Hide Territorries"),
                       Switch(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         value: switchValue,
                         activeColor: Colors.grey,
                         onChanged: (value) {
-                          setState(() {
-                            switchValue = value;
-                          });
+                          setState(
+                            () {
+                              switchValue = value;
+                            },
+                          );
                         },
-                      )
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
             10.height,
+            // Google Map
             SizedBox(
               height: context.height() * 0.4,
               width: context.width() * 1,
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(territory1Coords[0].latitude,
-                      territory1Coords[0].longitude),
-                  zoom: 10,
-                ),
-                onMapCreated: (GoogleMapController controller) {
-                  _controller = controller;
-                  _addTerritories(); // Call a method to add territories to the map
-                  _addMarkers(); // Call a method to add markers to the map
-                },
-                polygons: _polygons,
-                markers: _markers, // Add markers to the map
+              child: Stack(
+                children: [
+                  GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(territory1Coords[0].latitude,
+                          territory1Coords[0].longitude),
+                      zoom: 10,
+                    ),
+                    onMapCreated: (GoogleMapController controller) {
+                      _controller = controller;
+                      _addTerritories(); // Call a method to add territories to the map
+                      _addMarkers(); // Call a method to add markers to the map
+                    },
+                    polygons: _polygons,
+                    markers: _markers, // Add markers to the map
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: ListView.builder(
+                      itemCount: iconsAndFunction!.length,
+                      padding: const EdgeInsets.all(5),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(
+                              () {
+                                for (int i = 0;
+                                    i < iconsAndFunction!.length;
+                                    i++) {
+                                  iconColor[i] = (i == index)
+                                      ? Colors.orange
+                                      : Colors.white;
+                                }
+                              },
+                            );
+                            iconsAndFunction!["icon${index + 1}"]![1]();
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: iconColor[index],
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child:
+                                Icon(iconsAndFunction!["icon${index + 1}"]![0]),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
+            10.height,
+            // Row for Search in Territories and Draw New Territory
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1), // Shadow color
+                          spreadRadius: 1, // Spread radius
+                          blurRadius: 5, // Blur radius
+                          offset: const Offset(0, 2), // Shadow offset
+                        ),
+                      ],
+                      color: Colors.white,
+                    ),
+                    child: AppTextFieldWidget(
+                      controller: searchTerritoryController,
+                      focusNode: searchNode,
+                      width: context.width() * 0.5,
+                      hint: '  Search in Territories',
+                      isObsecure: false,
+                      suffix: GestureDetector(
+                        child: const Icon(Icons.search_outlined),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color:
+                                Colors.black.withOpacity(0.1), // Shadow color
+                            spreadRadius: 1, // Spread radius
+                            blurRadius: 5, // Blur radius
+                            offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
+                        color: Colors.grey[300],
+                      ),
+                      padding: const EdgeInsets.all(5),
+                      width: context.width() * 0.4,
+                      child: const Text(
+                        "Draw New Territory",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            10.height,
+            // DataTable for Territory Counts
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: DataTable(
+                columnSpacing: 5,
+                border: TableBorder.all(color: Colors.grey[200]!),
+                showBottomBorder: true,
+                showCheckboxColumn: true,
+                columns: [
+                  DataColumn(
+                    label: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      value: true,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  DataColumn(
+                    label: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const Icon(
+                          Icons.visibility_outlined,
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const Icon(
+                          Icons.settings_outlined,
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const Icon(
+                          Icons.workspaces_sharp,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const DataColumn(
+                    label: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: Text('Name'),
+                    ),
+                  ),
+                  const DataColumn(
+                    label: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: Text('Address Count'),
+                    ),
+                  ),
+                ],
+                rows: [],
+              ),
+            ),
+            10.height,
+            // Row for Territory Counts
+            Container(
+              margin: const EdgeInsets.only(left: 10),
+              width: context.width() * 0.5,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey[200]!, width: 1),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1), // Shadow color
+                    spreadRadius: 1, // Spread radius
+                    blurRadius: 5, // Blur radius
+                    offset: const Offset(0, 2), // Shadow offset
+                  ),
+                ],
+              ),
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  // rgba(215, 236, 237, 1)
+                  color: const Color.fromARGB(255, 215, 236, 237),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Territory Counts",
+                        style:
+                            TextStyle(fontSize: 15, color: AppColors.primary),
+                      ),
+                      10.width,
+                      const Icon(Icons.fullscreen)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            10.height,
           ],
         ),
       ),
     );
   }
-
-  List<LatLng> territory1Coords = [
-    const LatLng(40.7128, -74.0060),
-    const LatLng(40.7355, -74.0019),
-    const LatLng(40.7308, -73.9973),
-    const LatLng(40.7138, -74.0100),
-    const LatLng(40.7130, -74.0200),
-  ];
-
-  List<LatLng> territory2Coords = [
-    const LatLng(42.7128, -75.0060),
-    const LatLng(42.7355, -75.0019),
-    const LatLng(42.7308, -75.9973),
-    const LatLng(42.7138, -75.0100),
-    const LatLng(42.7130, -75.0200),
-  ];
 
   void _addTerritories() {
     // Add polygons for territories
@@ -248,7 +487,6 @@ class _TerritoryScreenState extends State<TerritoryScreen> {
     setState(() {});
   }
 
-// Helper method to calculate bounds from list of LatLng positions
   LatLngBounds _boundsFromLatLngList(List<LatLng> list) {
     double minLat = list[0].latitude;
     double maxLat = list[0].latitude;
@@ -286,7 +524,6 @@ class _CustomSwitchState extends State<CustomSwitch> {
         Container(
           margin: const EdgeInsets.all(0),
           height: 10,
-          // width: context.width() * 0.7,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.black, width: 1),
@@ -305,18 +542,21 @@ class _CustomSwitchState extends State<CustomSwitch> {
                     ? "Routes"
                     : "Unrouted",
             onChanged: (value) {
-              setState(() {
-                _value = value;
-              });
+              setState(
+                () {
+                  _value = value;
+                },
+              );
             },
           ),
         ),
+        5.height,
         const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('All'),
-            Text('Routed'),
-            Text('Unrouted'),
+            Text('     All', style: TextStyle(fontSize: 10)),
+            Text('     Routed', style: TextStyle(fontSize: 10)),
+            Text('Unrouted', style: TextStyle(fontSize: 10)),
           ],
         ),
       ],
