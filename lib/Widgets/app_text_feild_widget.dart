@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, must_be_immutable
+// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:p_route/Widgets/app_text.dart';
@@ -7,6 +7,7 @@ class AppTextFieldWidget extends StatefulWidget {
   String? text;
   final String? hint;
   final double? width;
+  final double? height;
   final bool? isObsecure;
   final TextEditingController controller;
   final FocusNode? focusNode;
@@ -27,6 +28,7 @@ class AppTextFieldWidget extends StatefulWidget {
     this.readOnly,
     this.prefixIcon,
     this.suffix,
+    this.height,
   });
 
   @override
@@ -39,7 +41,13 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.width,
+      width: widget.width ?? 100,
+      height: widget.height ?? 50,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey), // Add borders on all sides
+        borderRadius:
+            BorderRadius.circular(8), // Adjust the border radius as needed
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,16 +81,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
                         ))
                       : null),
               prefixIcon: widget.prefixIcon,
-              border: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-              focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.black,
-                ), // Customize underline color here
-              ),
+              border: InputBorder.none, // Remove the border line
             ),
           ),
         ],

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/Screens/route_management/route_management_screen.dart';
+import 'package:p_route/Screens/territory/territory_screen.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -60,6 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
       fun(iconImage: iconsNameList[1], title: "Dashboard"),
       fun(
         iconImage: iconsNameList[2],
+        iconTap: () {
+          AppNavigator.goToPage(context: context, screen: TerritoryScreen());
+        },
         title: "Manage Territories",
         subTitles: <Widget>[
           InkWell(
