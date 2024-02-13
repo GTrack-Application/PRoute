@@ -6,6 +6,7 @@ import 'package:p_route/Global/common/colors/app_colors.dart';
 import 'package:p_route/Screens/map_home_screen.dart';
 import 'package:p_route/Screens/route_management/route_management_screen.dart';
 import 'package:p_route/Screens/territory/territory_screen.dart';
+import 'package:p_route/Screens/view_orders_screen.dart';
 import 'package:p_route/Widgets/button_widget.dart';
 import 'package:p_route/global/common/utils/app_navigator.dart';
 
@@ -89,7 +90,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: 'Orders by Territory',
                     ),
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                        AppNavigator.goToPage(
+                          context: context,
+                          screen: ViewOrdersScreen(),
+                        );
+                      },
                       backgroundColor: AppColors.primary,
                       text: 'View Orders',
                     ),
