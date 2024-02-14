@@ -14,6 +14,27 @@ class ManageVehicleScreen extends StatefulWidget {
 
 class _ManageVehicleScreenState extends State<ManageVehicleScreen> {
   var addNewVehicleController = TextEditingController();
+
+  int _selectedIndex = 0;
+
+  void _onButtonPressed(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  Widget tableActive() {
+    return Expanded(child: Text("Active"));
+  }
+
+  Widget tablePending() {
+    return Expanded(child: Text("Pending"));
+  }
+
+  Widget tableDeleted() {
+    return Expanded(child: Text("Deleted"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +48,30 @@ class _ManageVehicleScreenState extends State<ManageVehicleScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  PrimaryButtonWidget(text: "Active", onPressed: () {}),
-                  PrimaryButtonWidget(text: "Pending", onPressed: () {}),
-                  PrimaryButtonWidget(text: "Deleted", onPressed: () {}),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          _selectedIndex == 0 ? Colors.orange : Colors.grey,
+                    ),
+                    onPressed: () => _onButtonPressed(0),
+                    child: const Text('Active'),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          _selectedIndex == 1 ? Colors.orange : Colors.grey,
+                    ),
+                    onPressed: () => _onButtonPressed(1),
+                    child: const Text('Pending'),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          _selectedIndex == 2 ? Colors.orange : Colors.grey,
+                    ),
+                    onPressed: () => _onButtonPressed(2),
+                    child: const Text('Deleted'),
+                  ),
                 ],
               ),
               32.height,
@@ -44,7 +86,7 @@ class _ManageVehicleScreenState extends State<ManageVehicleScreen> {
                           screen: const AddNewVehicleScreen(),
                         );
                       },
-                      backgroungColor: Colors.cyan,
+                      backgroungColor: Colors.green,
                     ),
                   ),
                   20.width,
@@ -58,7 +100,7 @@ class _ManageVehicleScreenState extends State<ManageVehicleScreen> {
                   ),
                 ],
               ),
-              const Expanded(child: Text("Table")),
+              [tableActive(), tablePending(), tableDeleted()][_selectedIndex],
             ],
           ),
         ));
