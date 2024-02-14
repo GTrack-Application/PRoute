@@ -15,6 +15,7 @@ class TextFieldWidget extends StatelessWidget {
     this.focusNode,
     this.onFieldSubmitted,
     this.enabled,
+    this.labelText,
   });
 
   final TextEditingController controller;
@@ -28,6 +29,7 @@ class TextFieldWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final Function(String)? onFieldSubmitted;
   final bool? enabled;
+  final String? labelText;
 
   @override
   Widget build(BuildContext context) {
@@ -48,25 +50,27 @@ class TextFieldWidget extends StatelessWidget {
             return null;
           },
       decoration: InputDecoration(
-        fillColor: AppColors.field,
+        fillColor: AppColors.grey,
+        labelText: labelText,
         filled: true,
         suffixIcon: suffixIcon ?? const SizedBox.shrink(),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 10,
           vertical: 10,
         ),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.grey,
-            width: 1.0,
-          ),
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-            width: 2.0,
-          ),
-        ),
+        border: InputBorder.none,
+        // border: const OutlineInputBorder(
+        //   borderSide: BorderSide(
+        //     color: AppColors.grey,
+        //     width: 1,
+        //   ),
+        // ),
+        // enabledBorder: const OutlineInputBorder(
+        //   borderSide: BorderSide(
+        //     color: Colors.black,
+        //     width: 2.0,
+        //   ),
+        // ),
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.danger,

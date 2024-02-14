@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 class PrimaryButtonWidget extends StatelessWidget {
   const PrimaryButtonWidget({
@@ -13,23 +12,19 @@ class PrimaryButtonWidget extends StatelessWidget {
   final Color? backgroungColor;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: context.width(),
-      height: 45,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroungColor ?? Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: backgroungColor ?? Theme.of(context).primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );
